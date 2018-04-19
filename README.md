@@ -28,6 +28,13 @@ To load sample data (Optional)
 ./manage.py loaddata test_data.json
 ```
 
+### Deploy with Docker Compose
+
+```
+mv .env.sample .env
+docker-compose up
+```
+if 
 ## TODO
 
 - Frontend

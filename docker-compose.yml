@@ -1,0 +1,26 @@
+version: '3'
+services:
+    pythonpy:
+        container_name: pythonpy_web
+        build: 
+            context: .
+            args:
+                - ADMIN_EMAIL
+                - ADMIN_PASSWORD
+                - ADMIN_USER
+        command: sh run.sh
+        restart: on-failure
+        volumes:
+            - .:/code
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+        env_file: .env
+    db:
+        container_name: pythonpy_db
+        restart: on-failure
+        image: postgres:10.3
+        volumes:
+            - /var/lib/postgresql:/var/lib/postgresql
+        env_file: .env
